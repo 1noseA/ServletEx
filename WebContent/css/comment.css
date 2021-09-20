@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/* 画像左右の隙間をなくす（リセットCSS） */
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #C0A2C7;
+	font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro','メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+header {
+	background-color: #522f60;
+}
+
+footer h3 {
+	background-color: #522f60;
+	color: #fff;
+	text-align: center;
+	letter-spacing: 5px;
+	height: 50px;
+	margin-top: 100px;
+	padding: 30px;
+}
+
+h1 {
+	color: #fff;
+	letter-spacing: 5px;
+	padding: 30px;
+}
+.show img {
+	width: 100%;
+}
+
+.contant {
+	width: 720px;
+	margin: auto;
+}
+.wrap {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 0 20px 0;
+}
+
+img {
+	display: block;
+	height: auto;
+	width: 30%;
+}
+
+.box {
+	width: 70%;
+	background-color: #fff;
+}
+
+h2 {
+	color: #6B1349;
+	text-align: center;
+	letter-spacing: 5px;
+	padding: 50px 0 30px 0;
+}
+
+h3 {
+	color: #fff;
+	background-color: #6B1349;
+	text-align: center;
+	margin: 0;
+	padding: 5px;
+}
+
+p {
+	padding: 10px;
+}
