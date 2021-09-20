@@ -36,7 +36,10 @@ public class ExFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// 受信データと送信データの文字コードを指定して
 	    request.setCharacterEncoding("UTF-8");
-	    response.setContentType("text/html; charset=UTF-8");
+	    // 以下を設定しているとcssが効かなくなる
+	    // response.setContentType("text/html; charset=UTF-8");
+	    // 以下に変更する。もしくはなくても日本語表示されcssも効く(謎)
+	    // response.setCharacterEncoding("UTF-8");
 	    // ここでそれらを繋げる
 	    chain.doFilter(request, response);
 	}
