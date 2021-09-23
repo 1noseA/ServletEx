@@ -20,7 +20,7 @@
 
 	<h2>● ぶどうの品種 ●</h2>
 
-	<div class="contant">
+	<div class="kind">
 		<div class="wrap">
 			<img src="./images/kyohou.jpg" alt="巨峰" title="巨峰">
 			<div class="box">
@@ -50,24 +50,29 @@
 		</div>
 	</div>
 
-	<h2>● お客さまのコメント ●</h2>
+	<h2>● お客さまからのコメント ●</h2>
 	<!-- コメント表示 -->
-	<table>
+	<div  class="comment-lists">
 		<c:forEach items="${ sessionScope.list }" var="com">
-			<tr>
-				<td><fmt:formatDate value="${ com.date }"/></td>
-				<td><c:out value="${ com.name }"/></td>
-				<td><c:out value="${ com.content }"/></td>
-			</tr>
+			<div class="com-list">
+				<fmt:formatDate value="${ com.date }"/>
+				★<c:out value="${ com.name }"/>さん★
+				<br>
+				<c:out value="${ com.content }"/>
+				<br>
+			</div>
 		</c:forEach>
-	</table>
+	</div>
 
+	<h4>＊＊コメントお待ちしております＊＊</h4>
 	<!-- コメント入力フォーム -->
-	<form action="comment" method="post">
-		<p>お名前：<input type="text" name="name" /></p>
-		<p>コメント：<textarea name="content"></textarea></p>
-		<input type="submit" value="送信" />
-	</form>
+	<div class="comment-form">
+		<form action="comment" method="post">
+			<p>お名前<br><input type="text" name="name" class="name" /></p>
+			<p>コメント<br><textarea name="content" class="content"></textarea></p>
+			<input type="submit" value="送信" />
+		</form>
+	</div>
 
 	<footer>
 		<h3>ぶどう狩りしようぜ！！</h3>
