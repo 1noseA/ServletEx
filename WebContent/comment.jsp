@@ -52,7 +52,7 @@
 
 	<h2>● お客さまからのコメント ●</h2>
 	<!-- コメント表示 -->
-	<div  class="comment-lists">
+	<div class="comment-lists">
 		<c:forEach items="${ sessionScope.list }" var="com">
 			<div class="com-list">
 				<fmt:formatDate value="${ com.date }"/>
@@ -60,6 +60,28 @@
 				<br>
 				<c:out value="${ com.content }"/>
 				<br>
+				<!-- 返信表示 -->
+				<div class="reply-lists">
+					<c:forEach items="${ sessionScope.com.reply }" var="rep">
+						<div class="rep-list">
+							<fmt:formatDate value="${ rep.repDate }"/>
+							★<c:out value="${ rep.repName }"/>さん★
+							<br>
+							<c:out value="${ rep.repContent }"/>
+							<br>
+						</div>
+					</c:forEach>
+				</div>
+
+				<h4>返信する</h4>
+				<!-- 返信入力フォーム -->
+				<div class="reply-form">
+					<form action="comment" method="post">
+						<p>お名前<br><input type="text" name="repName" class="name" /></p>
+						<p>コメント<br><textarea name="repContent" class="content"></textarea></p>
+						<input type="submit" value="送信" />
+					</form>
+				</div>
 			</div>
 		</c:forEach>
 	</div>

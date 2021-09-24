@@ -48,12 +48,25 @@ public class CommentServlet extends HttpServlet {
 			list = new ArrayList<>();
 		}
 
+		Integer id = (Integer)session.getAttribute("id");
+		if(id == null) {
+			id = 0;
+		}
+
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
-		Comment com = new Comment(new Date(), name, content);
+
+		List<Reply> reply = (List<Reply>) session.getAttribute("reply");
+
+		if (reply == null) {
+			reply = new ArrayList<>();
+		}
+
+		Comment com = new Comment(id + 1, new Date(), name, content, reply);
 
 		list.add(com);
 		session.setAttribute("list", list);
+		session.setAttribute("id", id + 1);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/comment.jsp");
 		rd.forward(request, response);

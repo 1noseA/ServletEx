@@ -1,18 +1,27 @@
 package com.sample;
 
 import java.util.Date;
+import java.util.List;
 
 public class Comment {
 
-	Date date;
-	String name;
-	String content;
+	private int id;
+	private Date date;
+	private String name;
+	private String content;
+	private List<Reply> reply;
 
-	public Comment(Date date, String name, String content) {
+	public Comment(int id, Date date, String name, String content, List<Reply> reply) {
 		super();
+		this.id = id;
 		this.date = date;
 		this.name = name;
 		this.content = content;
+		this.reply = reply;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public Date getDate() {
@@ -25,6 +34,10 @@ public class Comment {
 
 	public String getContent() {
 		return content;
+	}
+
+	public List<Reply> getReply() {
+		return reply;
 	}
 
 }
