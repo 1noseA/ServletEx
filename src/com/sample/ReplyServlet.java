@@ -14,16 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class PostServlet
+ * Servlet implementation class ReplyServlet
  */
-@WebServlet("/comment")
-public class CommentServlet extends HttpServlet {
+@WebServlet("/reply")
+public class ReplyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentServlet() {
+    public ReplyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,29 +42,25 @@ public class CommentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		List<Comment> list = (List<Comment>) session.getAttribute("list");
+		List<Reply> reply = (List<Reply>) session.getAttribute("reply");
 
-		if (list == null) {
-			list = new ArrayList<>();
+		if (reply == null) {
+			reply = new ArrayList<>();
 		}
 
-		Integer id = (Integer)session.getAttribute("id");
-		if(id == null) {
-			id = 0;
-		}
+		String repName = request.getParameter("repName");
+		String repContent = request.getParameter("repContent");
+		int comId = Integer.parseInt(request.getParameter("comId"));
 
-		String name = request.getParameter("name");
-		String content = request.getParameter("content");
+		Reply rep = new Reply(new Date(), repName, repContent, comId);
 
-		Comment com = new Comment(id + 1, new Date(), name, content);
-
-		list.add(com);
-		session.setAttribute("list", list);
-		session.setAttribute("id", id + 1);
+		reply.add(rep);
+		session.setAttribute("reply", reply);
+		// session.setAttribute("comId", comId);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/comment.jsp");
 		rd.forward(request, response);
 		return;
-
 	}
+
 }

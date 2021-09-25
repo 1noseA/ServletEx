@@ -55,30 +55,36 @@
 	<div class="comment-lists">
 		<c:forEach items="${ sessionScope.list }" var="com">
 			<div class="com-list">
+				<c:out value="${ com.id }"/>：
 				<fmt:formatDate value="${ com.date }"/>
 				★<c:out value="${ com.name }"/>さん★
 				<br>
 				<c:out value="${ com.content }"/>
 				<br>
-				<!-- 返信表示 -->
-				<div class="reply-lists">
-					<c:forEach items="${ sessionScope.com.reply }" var="rep">
-						<div class="rep-list">
-							<fmt:formatDate value="${ rep.repDate }"/>
-							★<c:out value="${ rep.repName }"/>さん★
-							<br>
-							<c:out value="${ rep.repContent }"/>
-							<br>
-						</div>
-					</c:forEach>
-				</div>
+				<c:if test="${ sessionScope.reply != null }">
+					<!-- 返信表示 -->
+					<div class="reply-lists">
+						<c:forEach items="${ sessionScope.reply }" var="rep">
+							<c:if test="${ com.id == rep.comId }">
+								<div class="rep-list">
+									<fmt:formatDate value="${ rep.repDate }"/>
+									★<c:out value="${ rep.repName }"/>さん★
+									<br>
+									<c:out value="${ rep.repContent }"/>
+									<br>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+				</c:if>
 
 				<h4>返信する</h4>
 				<!-- 返信入力フォーム -->
 				<div class="reply-form">
-					<form action="comment" method="post">
+					<form action="reply" method="post">
 						<p>お名前<br><input type="text" name="repName" class="name" /></p>
 						<p>コメント<br><textarea name="repContent" class="content"></textarea></p>
+						<input type="hidden" name="comId" value="${ com.id }" />
 						<input type="submit" value="送信" />
 					</form>
 				</div>
