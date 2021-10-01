@@ -55,22 +55,25 @@
 	<div class="comment-lists">
 		<c:forEach items="${ sessionScope.list }" var="com">
 			<div class="com-list">
-				<c:out value="${ com.id }"/>：
-				<fmt:formatDate value="${ com.date }"/>
-				★<c:out value="${ com.name }"/>さん★
+				<span><c:out value="${ com.id }" />：</span>
+				<fmt:formatDate value="${ com.date }" />
+				<span>★<c:out value="${ com.name }" />さん★</span>
 				<br>
-				<c:out value="${ com.content }"/>
+				<span><c:out value="${ com.content }" /></span>
 				<br>
 				<c:if test="${ sessionScope.reply != null }">
 					<!-- 返信表示 -->
 					<div class="reply-lists">
 						<c:forEach items="${ sessionScope.reply }" var="rep">
 							<c:if test="${ com.id == rep.comId }">
+								<%-- <c:set value="${ count +1 }" var="count"></c:set> --%>
+								<hr width="100%">
 								<div class="rep-list">
-									<fmt:formatDate value="${ rep.repDate }"/>
-									★<c:out value="${ rep.repName }"/>さん★
+									<%-- <c:out value="${ count }" />： --%>
+									<fmt:formatDate value="${ rep.repDate }" />
+									<span><c:out value="${ rep.repName }" />より</span>
 									<br>
-									<c:out value="${ rep.repContent }"/>
+									<span><c:out value="${ rep.repContent }" /></span>
 									<br>
 								</div>
 							</c:if>
@@ -82,23 +85,23 @@
 				<!-- 返信入力フォーム -->
 				<div class="reply-form">
 					<form action="reply" method="post">
-						<p>お名前<br><input type="text" name="repName" class="name" /></p>
-						<p>コメント<br><textarea name="repContent" class="content"></textarea></p>
+						<p>お名前<br><input type="text" name="repName" class="name" required /></p>
+						<p>コメント<br><textarea name="repContent" class="content" required></textarea></p>
 						<input type="hidden" name="comId" value="${ com.id }" />
-						<input type="submit" value="送信" />
+						<input type="submit" value="送信" class="submit-button" />
 					</form>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
 
-	<h4>＊＊コメントお待ちしております＊＊</h4>
+	<h5>＊＊コメントお待ちしております＊＊</h5>
 	<!-- コメント入力フォーム -->
 	<div class="comment-form">
 		<form action="comment" method="post">
-			<p>お名前<br><input type="text" name="name" class="name" /></p>
-			<p>コメント<br><textarea name="content" class="content"></textarea></p>
-			<input type="submit" value="送信" />
+			<p>お名前<br><input type="text" name="name" class="name" required /></p>
+			<p>コメント<br><textarea name="content" class="content" required></textarea></p>
+			<input type="submit" value="送信" class="submit-button" />
 		</form>
 	</div>
 

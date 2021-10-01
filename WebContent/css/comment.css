@@ -82,19 +82,50 @@ h3 {
 
 .com-list {
 	background-color: #fff;
-	padding: 10px;
-	margin: 5px;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+.reply-lists {
+	padding: 20px;
+}
+
+.rep-list {
+	padding: 5px 0;
+}
+
+.reply-form {
+	padding: 0 20px;
+}
+
+.submit-button {
+	letter-spacing: 3px;
+	color: #fff;
+	background-color: #6B1349;
+	border: 1px solid #6B1349;
+	border-radius: 10px;
+	cursor: pointer;
+	padding: 5px 20px;
+	margin-top: 10px;
 }
 
 h4 {
 	font-size: 16px;
 	color: #6B1349;
 	text-align: center;
-	padding: 50px 0 10px 0;
+	padding-top: 10px;
+}
+
+h5 {
+	font-size: 16px;
+	color: #6B1349;
+	text-align: center;
+	padding: 30px 0 10px 0;
 }
 
 .comment-form {
-	width: 360px;
+	width: 30%;
 	margin: auto;
 }
 
